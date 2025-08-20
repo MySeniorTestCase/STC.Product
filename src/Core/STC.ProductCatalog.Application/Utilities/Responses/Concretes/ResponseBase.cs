@@ -5,7 +5,7 @@ namespace STC.ProductCatalog.Application.Utilities.Responses.Concretes;
 
 public class ResponseBase : IResponse
 {
-    protected ResponseBase()
+    public ResponseBase()
     {
     }
 

@@ -8,8 +8,9 @@
       "applicationUrl": "http://localhost:5002",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionStrings:MongoDb": "mongodb://root:test1234@localhost:27017/",
-        "ConnectionStrings:RabbitMQ": "amqp://root:test1234@localhost:5672/"
+        "ConnectionStrings:MongoDb": "mongodb://admin:test1234@localhost:27017/?authSource=admin",
+        "ConnectionStrings:RabbitMQ": "amqp://root:test1234@localhost:5672/",
+        "ConnectionStrings:Redis": "localhost:6379,password=test1234,defaultDatabase=0"
       }
     }
   }

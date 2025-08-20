@@ -1,8 +1,11 @@
 using System.Net;
+using System.Text.Json.Serialization;
 using STC.ProductCatalog.Application.Utilities.Responses.Concretes;
 
 namespace STC.ProductCatalog.Application.Utilities.Responses.Abstracts;
 
+[JsonDerivedType(typeof(ResponseBase))]
+[JsonDerivedType(typeof(DataResponseBase<>))]
 public interface IResponse
 {
     public string Message { get; set; }

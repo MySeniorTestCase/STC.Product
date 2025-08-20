@@ -54,4 +54,7 @@ public static class ResponseCreator
 
     public static IDataResponse<T> Error<T>(IResponse response)
         => Merge(response: response, data: default(T));
+
+    public static DataResponseBase<T> Convert<T>(IDataResponse<T> response)
+        => (DataResponseBase<T>)response;
 }

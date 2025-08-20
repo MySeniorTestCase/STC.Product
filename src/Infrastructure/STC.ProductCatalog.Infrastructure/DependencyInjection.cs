@@ -15,6 +15,14 @@ public static class DependencyInjection
     {
         services.AddSingleton<IObjectStorageService, LocalObjectStorageManager>();
 
+        services.AddHybridCache();
+
+        services.AddStackExchangeRedisCache(setupAction: options => options.Configuration =
+            configuration.GetConnectionString("Redis") ??
+            throw new ArgumentNullException(
+                message: "Redis connection string is not configured.",
+                innerException: null));
+
         services.AddMassTransit(x =>
         {
             x.AddConsumer<ProductCreationConsumer>();

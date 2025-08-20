@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Caching.Hybrid;
+using STC.ProductCatalog.Application.Features.Products.Helpers;
 using STC.ProductCatalog.Domain.Aggregates.Products;
 using STC.ProductCatalog.Domain.Aggregates.Products.Repositories;
 using STC.ProductCatalog.Domain.Aggregates.Products.Services;
@@ -6,7 +8,8 @@ namespace STC.ProductCatalog.Application.Features.Products.Commands.CreateProduc
 
 public class CreateProductCommandRequestHandler(
     IProductDomainService productDomainService,
-    IProductWriteRepository productWriteRepository)
+    IProductWriteRepository productWriteRepository,
+    HybridCache cache)
     : IRequestHandler<CreateProductCommandRequest, IDataResponse<CreateProductCommandResponse>>
 {
     public async Task<IDataResponse<CreateProductCommandResponse>> Handle(CreateProductCommandRequest request,
@@ -22,6 +25,8 @@ public class CreateProductCommandRequestHandler(
 
         if (await productWriteRepository.SaveChangesAsync(cancellationToken: cancellationToken) is false)
             throw new InvalidOperationException(message: Messages.ProductCouldNotBeCreated);
+
+        await cache.RemoveAsync(key: ProductCacheKeyHelper.ProductsCacheKey, cancellationToken: cancellationToken);
 
         return ResponseCreator.Success(message: Messages.ProductCreatedSuccessfully,
             data: new CreateProductCommandResponse(Id: product.Id));

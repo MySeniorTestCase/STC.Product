@@ -48,7 +48,7 @@ public abstract class MongoDbReadRepository<TDocument, TKey>(IMongoCollection<TD
                 var sortDefinitionBuilder = Builders<TDocument>.Sort;
                 SortDefinition<TDocument>? sort = null;
 
-                foreach (ISortDefinition sortDefinition in pagination.Sorts)
+                foreach (SortDefinition sortDefinition in pagination.Sorts)
                 {
                     SortDefinition<TDocument> currentSort = sortDefinition.OrderBy == OrderBy.Ascending
                         ? sortDefinitionBuilder.Ascending(sortDefinition.Field)
