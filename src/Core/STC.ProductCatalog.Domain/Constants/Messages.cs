@@ -15,4 +15,6 @@ public static class Messages
     public const string ProductCouldNotBeUpdated = "Product could not be updated.";
     public const string ProductUpdatedSuccessfully = "Product updated successfully.";
     public const string ProductImageUploadFailed = "Product image upload failed.";
+    public const string FileUploadedSuccessfully = "File uploaded successfully.";
+    public const string FileDeletedSuccessfully = "File deleted successfully.";
 }

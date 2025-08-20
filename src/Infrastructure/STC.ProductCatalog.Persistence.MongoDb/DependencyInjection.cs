@@ -18,7 +18,7 @@ public static class DependencyInjection
     public static IServiceCollection AddMongoDbPersistenceDependencies(this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddSingleton<MongoClient>(_ =>
+        services.AddSingleton<IMongoClient>(_ =>
         {
             MongoClientSettings settings = MongoClientSettings.FromConnectionString(
                 connectionString: configuration.GetConnectionString(name: "MongoDb") ??
@@ -45,7 +45,7 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IMongoDbContext, MongoDbContext>();
-        services.AddScoped<IClientSessionHandle>(provider => provider.GetService<MongoClient>()!.StartSession());
+        services.AddScoped<IClientSessionHandle>(provider => provider.GetService<IMongoClient>()!.StartSession());
         services.AddScoped<IUnitOfWork, MongoDbUnitOfWork>();
 
         services.AddScoped<IProductReadRepository, MongoDbProductReadRepository>();

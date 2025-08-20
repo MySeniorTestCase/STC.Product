@@ -17,6 +17,7 @@ public static class ProductsExtensions
                     await mediator.Publish(notification, cancellationToken: cancellationToken);
                     return Results.Accepted();
                 })
-            .WithName("Create Product Request");
+            .WithName("Create Product Request")
+            .DisableAntiforgery();
     }
 }

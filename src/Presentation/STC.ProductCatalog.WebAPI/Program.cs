@@ -8,17 +8,18 @@ using STC.ProductCatalog.WebAPI.ApiGroups;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+builder.Services.AddAntiforgery();
 
 builder.Services.AddDomainDependencies()
     .AddApplicationDependencies()
-    .AddInfrastructureDependencies()
+    .AddInfrastructureDependencies(configuration: builder.Configuration)
     .AddMongoDbPersistenceDependencies(configuration: builder.Configuration);
 
 WebApplication app = builder.Build();
 
-app.MapProductsApi();
-
+app.UseAntiforgery();
 app.MapOpenApi();
 app.MapScalarApiReference();
+app.MapProductsApi();
 
 app.Run();

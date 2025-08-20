@@ -2,5 +2,6 @@ namespace STC.ProductCatalog.Infrastructure.Constants;
 
 public static class QueueInformations
 {
-    public static Uri ProductCreationRequestQueueUri => new Uri("queue:product-creation-request");
+    public const string ProductCreationRequestQueue = "product-creation-request";
+    public static Uri ProductCreationRequestQueueUri => new Uri($"queue:{ProductCreationRequestQueue}");
 }
