@@ -1,6 +1,5 @@
 using MassTransit;
 using STC.ProductCatalog.Application.Features.Products.Commands.CreateProduct;
-using STC.ProductCatalog.Infrastructure.Features.Products.QueueMessages;
 
 namespace STC.ProductCatalog.Infrastructure.Features.Products.Consumers.ProductCreation;
 

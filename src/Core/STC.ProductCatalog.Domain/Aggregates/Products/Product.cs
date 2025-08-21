@@ -47,6 +47,10 @@ public class Product : AggregateRootBase
         ValidateName(name: name, throwException: true);
 
         Name = name;
+
+        bool isInitialized = string.IsNullOrEmpty(this.Id);
+        if (isInitialized is false)
+            this.AddDomainEvent(new ProductUpdatedDomainEvent(Id: this.Id));
     }
 
     internal static bool ValidateDescription(string description, bool throwException = true)
@@ -71,6 +75,10 @@ public class Product : AggregateRootBase
         ValidateDescription(description: description, throwException: true);
 
         Description = description;
+
+        bool isInitialized = string.IsNullOrEmpty(this.Id);
+        if (isInitialized is false)
+            this.AddDomainEvent(new ProductUpdatedDomainEvent(Id: this.Id));
     }
 
     public void SetImageUrl(string imageUrl)
@@ -79,6 +87,10 @@ public class Product : AggregateRootBase
             throw new ArgumentException(message: Messages.ImageUrlCannotBeEmpty);
 
         ImageUrl = imageUrl;
+        
+        bool isInitialized = string.IsNullOrEmpty(this.Id);
+        if (isInitialized is false)
+            this.AddDomainEvent(new ProductUpdatedDomainEvent(Id: this.Id));
     }
 
 
@@ -99,8 +111,12 @@ public class Product : AggregateRootBase
     public void SetPrice(long price)
     {
         ValidatePrice(price: price);
-
+        
         Price = price;
+        
+        bool isInitialized = string.IsNullOrEmpty(this.Id);
+        if (isInitialized is false)
+            this.AddDomainEvent(new ProductUpdatedDomainEvent(Id: this.Id));
     }
 
     public static Product Create(string name, string description, string imageUrl, long price)

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using STC.ProductCatalog.Application.Features.Products.Commands.CreateProduct;
 using STC.ProductCatalog.Application.Features.Products.Commands.UpdateProduct;
 using STC.ProductCatalog.Application.Features.Products.Notifications.ProductCreationRequest;
+using STC.ProductCatalog.Application.Features.Products.Notifications.ProductUpdateRequest;
 using STC.ProductCatalog.Application.Features.Products.Queries.GetProductDetail;
 using STC.ProductCatalog.Application.Features.Products.Queries.GetProducts;
 
@@ -36,10 +37,10 @@ public class ProductsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPut]
-    public async Task<IResult> UpdateProductAsync([FromForm] UpdateProductCommandRequest request,
+    public async Task<IResult> UpdateProductAsync([FromForm] ProductUpdateRequestNotificationRequest request,
         CancellationToken cancellationToken)
     {
-        var result = await mediator.Send(request, cancellationToken);
-        return new ResponseGenerator(result);
+        await mediator.Publish(request, cancellationToken);
+        return Results.Accepted();
     }
 }

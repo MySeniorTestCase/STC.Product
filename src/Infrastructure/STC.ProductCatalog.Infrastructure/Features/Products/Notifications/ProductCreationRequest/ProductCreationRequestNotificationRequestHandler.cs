@@ -3,7 +3,7 @@ using STC.ProductCatalog.Application.Features.Products.Notifications.ProductCrea
 using STC.ProductCatalog.Application.Utilities.ObjectStorage;
 using STC.ProductCatalog.Domain.Aggregates.Products;
 using STC.ProductCatalog.Infrastructure.Constants;
-using STC.ProductCatalog.Infrastructure.Features.Products.QueueMessages;
+using STC.ProductCatalog.Infrastructure.Features.Products.Consumers.ProductCreation;
 
 namespace STC.ProductCatalog.Infrastructure.Features.Products.Notifications.ProductCreationRequest;
 
