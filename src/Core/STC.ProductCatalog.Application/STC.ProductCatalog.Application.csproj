@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\STC.Shared\src\Utilities\STC.Shared.Utilities.Response\STC.Shared.Utilities.Response.csproj" />
       <ProjectReference Include="..\STC.ProductCatalog.Domain\STC.ProductCatalog.Domain.csproj" />
     </ItemGroup>
 

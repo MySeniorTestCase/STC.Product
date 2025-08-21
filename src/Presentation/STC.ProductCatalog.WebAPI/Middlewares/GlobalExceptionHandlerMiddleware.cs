@@ -1,6 +1,6 @@
 using System.Net;
-using STC.ProductCatalog.Application.Utilities.Responses;
-using STC.ProductCatalog.Application.Utilities.Responses.Abstracts;
+using STC.Shared.Utilities.Response;
+using STC.Shared.Utilities.Response.Abstracts;
 
 namespace STC.ProductCatalog.WebAPI.Middlewares;
 

@@ -1,4 +1,4 @@
-using STC.ProductCatalog.Application.Utilities.Responses.Abstracts;
+using STC.Shared.Utilities.Response.Abstracts;
 
 namespace STC.ProductCatalog.WebAPI;
 

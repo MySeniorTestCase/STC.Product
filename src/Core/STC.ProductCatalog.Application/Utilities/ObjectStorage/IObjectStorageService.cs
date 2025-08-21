@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using STC.ProductCatalog.Application.Utilities.ObjectStorage.Models;
 using STC.ProductCatalog.Domain._Shared.Medias;
+using STC.Shared.Utilities.Response.Abstracts;
 
 namespace STC.ProductCatalog.Application.Utilities.ObjectStorage;
 

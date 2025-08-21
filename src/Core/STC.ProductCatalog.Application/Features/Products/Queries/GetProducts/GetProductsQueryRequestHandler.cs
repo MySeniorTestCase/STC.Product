@@ -4,9 +4,9 @@ using STC.ProductCatalog.Application.Features.Products.Constants;
 using STC.ProductCatalog.Application.Features.Products.Helpers;
 using STC.ProductCatalog.Application.Utilities.ObjectStorage;
 using STC.ProductCatalog.Application.Utilities.Prices;
-using STC.ProductCatalog.Application.Utilities.Responses.Concretes;
 using STC.ProductCatalog.Domain.Aggregates.Products;
 using STC.ProductCatalog.Domain.Aggregates.Products.Repositories;
+using STC.Shared.Utilities.Response.Concretes;
 
 namespace STC.ProductCatalog.Application.Features.Products.Queries.GetProducts;
 
