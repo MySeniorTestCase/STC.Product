@@ -22,7 +22,7 @@ public static class DependencyInjection
         {
             MongoClientSettings settings = MongoClientSettings.FromConnectionString(
                 connectionString: configuration.GetConnectionString(name: "MongoDb") ??
-                                  throw new ArgumentNullException(
+                                  throw new InvalidOperationException(
                                       message: "MongoDb connection string is not configured.", innerException: null));
 
             settings.ApplicationName = "STC.ProductCatalog";

@@ -1,3 +1,4 @@
+using STC.ProductCatalog.Domain._Shared.Medias;
 using STC.ProductCatalog.Domain._Shared.Types.Concretes;
 using STC.ProductCatalog.Domain.Aggregates.Products.Events;
 using STC.ProductCatalog.Domain.Constants;
@@ -10,18 +11,18 @@ public class Product : AggregateRootBase
     {
     }
 
-    private Product(string name, string description, string imageUrl, long price, DateTime createdAt)
+    private Product(string name, string description, Media media, long price, DateTime createdAt)
     {
         SetName(name: name);
         SetDescription(description: description);
-        SetImageUrl(imageUrl: imageUrl);
+        AddMedia(media: media);
         SetPrice(price: price);
         CreatedAt = createdAt;
     }
 
     public string Name { get; private set; } = null!;
     public string Description { get; private set; } = null!;
-    public string ImageUrl { get; private set; } = null!;
+    public ICollection<Media> Medias { get; private set; } = [];
     public long Price { get; private set; }
     public DateTime CreatedAt { get; private set; }
 
@@ -81,13 +82,10 @@ public class Product : AggregateRootBase
             this.AddDomainEvent(new ProductUpdatedDomainEvent(Id: this.Id));
     }
 
-    public void SetImageUrl(string imageUrl)
+    public void AddMedia(Media media)
     {
-        if (string.IsNullOrEmpty(imageUrl))
-            throw new ArgumentException(message: Messages.ImageUrlCannotBeEmpty);
+        Medias.Add(media);
 
-        ImageUrl = imageUrl;
-        
         bool isInitialized = string.IsNullOrEmpty(this.Id);
         if (isInitialized is false)
             this.AddDomainEvent(new ProductUpdatedDomainEvent(Id: this.Id));
@@ -111,19 +109,19 @@ public class Product : AggregateRootBase
     public void SetPrice(long price)
     {
         ValidatePrice(price: price);
-        
+
         Price = price;
-        
+
         bool isInitialized = string.IsNullOrEmpty(this.Id);
         if (isInitialized is false)
             this.AddDomainEvent(new ProductUpdatedDomainEvent(Id: this.Id));
     }
 
-    public static Product Create(string name, string description, string imageUrl, long price)
+    public static Product Create(string name, string description, Media media, long price)
     {
         Product instance = new Product(name: name,
             description: description,
-            imageUrl: imageUrl,
+            media: media,
             price: price,
             createdAt: DateTime.UtcNow);
 

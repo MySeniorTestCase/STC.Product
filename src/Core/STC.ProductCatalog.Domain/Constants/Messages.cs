@@ -16,5 +16,8 @@ public static class Messages
     public const string ProductUpdatedSuccessfully = "Product updated successfully.";
     public const string ProductImageUploadFailed = "Product image upload failed.";
     public const string FileUploadedSuccessfully = "File uploaded successfully.";
-    public const string FileDeletedSuccessfully = "File deleted successfully.";
+    public const string FilesDeletedSuccessfully = "Files deleted successfully.";
+    public const string YourProductUpdateRequestHasBeenQueued = "Your product update request has been queued.";
+    public const string MediaProviderCouldNotBeDetected = "Provider could not be detected.";
+    public const string MediaFileNameCanNotBeEmpty = "Media file name can not be empty.";
 }

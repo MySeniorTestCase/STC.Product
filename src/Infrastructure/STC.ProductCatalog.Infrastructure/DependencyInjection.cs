@@ -24,7 +24,7 @@ public static class DependencyInjection
 
         services.AddStackExchangeRedisCache(setupAction: options => options.Configuration =
             configuration.GetConnectionString("Redis") ??
-            throw new ArgumentNullException(
+            throw new InvalidOperationException(
                 message: "Redis connection string is not configured.",
                 innerException: null));
 
@@ -36,7 +36,7 @@ public static class DependencyInjection
             x.UsingRabbitMq((context, cfg) =>
             {
                 cfg.Host(hostAddress: new Uri(configuration.GetConnectionString("RabbitMQ") ??
-                                              throw new ArgumentNullException(
+                                              throw new InvalidOperationException(
                                                   message: "RabbitMQ connection string is not configured.",
                                                   innerException: null)));
 

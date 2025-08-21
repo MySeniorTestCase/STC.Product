@@ -57,4 +57,7 @@ public static class ResponseCreator
 
     public static DataResponseBase<T> Convert<T>(IDataResponse<T> response)
         => (DataResponseBase<T>)response;
+    
+    public static ResponseBase Convert(IResponse response)
+        => (ResponseBase)response;
 }

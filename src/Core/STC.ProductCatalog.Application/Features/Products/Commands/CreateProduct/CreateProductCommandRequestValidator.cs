@@ -6,7 +6,7 @@ public class CreateProductCommandRequestValidator : AbstractValidator<CreateProd
     {
         RuleFor(x => x.Name).NotNull();
         RuleFor(x => x.Description).NotNull();
-        RuleFor(x => x.ImageUrl).NotNull();
+        RuleFor(x => x.Image).NotNull();
         RuleFor(x => x.Price).NotNull();
     }
 }
