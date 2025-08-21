@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\STC.Shared\src\Utilities\STC.Shared.Logger\STC.Shared.Logger.csproj" />
       <ProjectReference Include="..\..\Core\STC.ProductCatalog.Application\STC.ProductCatalog.Application.csproj" />
     </ItemGroup>
 

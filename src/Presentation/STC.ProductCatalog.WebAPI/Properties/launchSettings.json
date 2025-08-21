@@ -10,7 +10,13 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ConnectionStrings:MongoDb": "mongodb://admin:test1234@localhost:27017/?authSource=admin",
         "ConnectionStrings:RabbitMQ": "amqp://root:test1234@localhost:5672/",
-        "ConnectionStrings:Redis": "localhost:6379,password=test1234,defaultDatabase=0"
+        "ConnectionStrings:Redis": "localhost:6379,password=test1234,defaultDatabase=0",
+        "Logger:ExchangeName": "LogExchange",
+        "Logger:BatchPostingLimit": "200",
+        "Logger:RabbitMq:HostName": "localhost",
+        "Logger:RabbitMq:Port": "5672",
+        "Logger:RabbitMq:UserName": "root",
+        "Logger:RabbitMq:Password": "test1234"
       }
     }
   }

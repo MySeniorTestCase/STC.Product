@@ -14,7 +14,7 @@ builder.Services.AddScoped<GlobalExceptionHandlerMiddleware>();
 
 builder.Services.AddDomainDependencies()
     .AddApplicationDependencies()
-    .AddInfrastructureDependencies(configuration: builder.Configuration)
+    .AddInfrastructureDependencies(configuration: builder.Configuration, loggingBuilder: builder.Logging)
     .AddMongoDbPersistenceDependencies(configuration: builder.Configuration);
 
 WebApplication app = builder.Build();
