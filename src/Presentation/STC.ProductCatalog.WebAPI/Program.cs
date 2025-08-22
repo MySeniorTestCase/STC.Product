@@ -23,6 +23,6 @@ app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.MapControllers();
 app.UseAntiforgery();
 app.MapOpenApi();
-app.MapScalarApiReference();
+app.MapScalarApiReference(_ => _.Servers = []);
 
 app.Run();

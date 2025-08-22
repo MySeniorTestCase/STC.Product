@@ -10,7 +10,7 @@ using STC.Shared.Utilities.Response;
 
 namespace STC.ProductCatalog.WebAPI.Controllers;
 
-[ApiController, Route("api/products")]
+[ApiController, Route("products")]
 public class ProductsController(IMediator mediator) : ControllerBase
 {
     private const int MultipartBodyLengthLimit = 5 * (1024 * 1024); // 5MB limit
