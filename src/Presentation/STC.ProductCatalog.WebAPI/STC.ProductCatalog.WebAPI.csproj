@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\STC.Shared\src\Utilities\STC.Shared.Auth.Consumer\STC.Shared.Auth.Consumer.csproj" />
       <ProjectReference Include="..\..\Core\STC.ProductCatalog.Application\STC.ProductCatalog.Application.csproj" />
       <ProjectReference Include="..\..\Core\STC.ProductCatalog.Domain\STC.ProductCatalog.Domain.csproj" />
       <ProjectReference Include="..\..\Infrastructure\STC.ProductCatalog.Persistence.MongoDb\STC.ProductCatalog.Persistence.MongoDb.csproj" />

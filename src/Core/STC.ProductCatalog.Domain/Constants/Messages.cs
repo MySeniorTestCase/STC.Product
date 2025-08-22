@@ -20,4 +20,6 @@ public static class Messages
     public const string YourProductUpdateRequestHasBeenQueued = "Your product update request has been queued.";
     public const string MediaProviderCouldNotBeDetected = "Provider could not be detected.";
     public const string MediaFileNameCanNotBeEmpty = "Media file name can not be empty.";
+    public const string ProductCouldNotBeDeleted = "Product could not be deleted.";
+    public const string ProductDeletedSuccessfully = "Product deleted successfully.";
 }
