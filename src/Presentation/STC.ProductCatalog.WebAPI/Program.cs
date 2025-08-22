@@ -1,3 +1,4 @@
+using Microsoft.Extensions.FileProviders;
 using Scalar.AspNetCore;
 using STC.ProductCatalog.Application;
 using STC.ProductCatalog.Domain;
@@ -38,8 +39,16 @@ builder.Services.AddDomainDependencies()
 WebApplication app = builder.Build();
 
 app.MapOpenApi();
+app.UseStaticFiles(options: new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.WebRootPath)),
+
+    RequestPath = "/assets"
+});
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 app.MapControllers();
 app.UseAntiforgery();

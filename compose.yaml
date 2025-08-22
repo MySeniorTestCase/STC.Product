@@ -1,0 +1,30 @@
+﻿services:
+  stc.productcatalog:
+    image: stc.productcatalog
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Production"
+      ConnectionStrings__MongoDb: "mongodb://admin:test1234@mongodb:27017/?authSource=admin"
+      ConnectionStrings__RabbitMQ: "amqp://root:test1234@rabbitmq:5672/"
+      ConnectionStrings__Redis: "redis:6379,password=test1234,defaultDatabase=0"
+      Logger__ExchangeName: "LogExchange"
+      Logger__BatchPostingLimit: "200"
+      Logger__RabbitMq__HostName: "rabbitmq"
+      Logger__RabbitMq__Port: "5672"
+      Logger__RabbitMq__UserName: "root"
+      Logger__RabbitMq__Password: "test1234"
+    ports:
+      - 5002:8080
+    volumes:
+      - productcatalog-data:/app/wwwroot
+    networks:
+      - stc-network
+    user: "${UID:-0}:${GID:-0}"
+    build:
+        context: .
+        dockerfile: src/Presentation/STC.ProductCatalog.WebAPI/Dockerfile
+volumes:
+  productcatalog-data:
+
+networks:
+  stc-network:
+    external: true
