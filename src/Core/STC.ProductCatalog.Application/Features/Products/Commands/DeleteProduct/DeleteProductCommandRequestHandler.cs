@@ -1,4 +1,6 @@
+using Microsoft.Extensions.Caching.Hybrid;
 using Microsoft.Extensions.Logging;
+using STC.ProductCatalog.Application.Features.Products.Helpers;
 using STC.ProductCatalog.Application.Utilities.ObjectStorage;
 using STC.ProductCatalog.Domain.Aggregates.Products;
 using STC.ProductCatalog.Domain.Aggregates.Products.Repositories;
@@ -9,6 +11,7 @@ public class DeleteProductCommandRequestHandler(
     IProductReadRepository productReadRepository,
     IObjectStorageService objectStorageService,
     IProductWriteRepository productWriteRepository,
+    HybridCache cache,
     ILogger<DeleteProductCommandRequestHandler> logger)
     : IRequestHandler<DeleteProductCommandRequest, IDataResponse<DeleteProductCommandResponse>>
 {
@@ -43,6 +46,13 @@ public class DeleteProductCommandRequestHandler(
         }
 
         logger.LogInformation("Product deleted successfully.");
+
+        await cache.RemoveAsync(
+            keys:
+            [
+                ProductCacheKeyHelper.ProductsCacheKey,
+                ProductCacheKeyHelper.GetProductDetailCacheKey(productId: product.Id)
+            ], cancellationToken: cancellationToken);
 
         return ResponseCreator.Success(message: Messages.ProductDeletedSuccessfully,
             data: new DeleteProductCommandResponse(Id: product.Id));
